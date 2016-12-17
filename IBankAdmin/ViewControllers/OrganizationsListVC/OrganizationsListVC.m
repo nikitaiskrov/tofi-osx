@@ -148,20 +148,22 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-    // fix head select
-//    lastSelectedRowIndex = [[notification object] selectedRow];
-//    iBankSessionManager.CurrentEditableUserID = ((User *)iBankSessionManager.Users[lastSelectedRowIndex]).ID;
-//    
-//    NSStoryboard *sb = [self storyboard];
-//    id animator = [[MyCustomAnimator alloc] init];
-//    NSViewController *userEdit = [sb instantiateControllerWithIdentifier:@"UserEdit"];
-//    
-//    if (mainWindowRootController == nil)
-//    {
-//        mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
-//    }
-//    
-//    [mainWindowRootController presentViewController:userEdit animator:animator];
+    lastSelectedRowIndex = [[notification object] selectedRow];
+    if (lastSelectedRowIndex >= 0)
+    {
+        iBankSessionManager.CurrentEditableOrganizationID = ((Organization *)iBankSessionManager.Organizations[lastSelectedRowIndex]).ID;
+        
+        NSStoryboard *sb = [self storyboard];
+        id animator = [[MyCustomAnimator alloc] init];
+        NSViewController *userEdit = [sb instantiateControllerWithIdentifier:@"OrganizationEditVC"];
+        
+        if (mainWindowRootController == nil)
+        {
+            mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+        }
+        
+        [mainWindowRootController presentViewController:userEdit animator:animator];
+    }
 }
 
 

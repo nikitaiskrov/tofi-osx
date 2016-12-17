@@ -15,6 +15,7 @@
 		11FBC34E1DED5D3500F3A996 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FBC34D1DED5D3500F3A996 /* MainWindow.m */; };
 		192613171DF40EAE00B83115 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192613151DF40EAE00B83115 /* Main.storyboard */; };
 		19262D4E1DE9D5BE0086FDE0 /* RandomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19262D4D1DE9D5BE0086FDE0 /* RandomManager.m */; };
+		192849181E05E8A000B120C1 /* OrganizationEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 192849171E05E8A000B120C1 /* OrganizationEditVC.m */; };
 		19441A511E0331E70027A2DA /* OrganizationAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19441A501E0331E70027A2DA /* OrganizationAddVC.m */; };
 		19441A541E03FEC00027A2DA /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 19441A531E03FEC00027A2DA /* Category.m */; };
 		19441A581E0401B10027A2DA /* CategoryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19441A571E0401B10027A2DA /* CategoryListVC.m */; };
@@ -99,6 +100,8 @@
 		192613161DF40EAE00B83115 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = IBankAdmin/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19262D4C1DE9D5BE0086FDE0 /* RandomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandomManager.h; path = Managers/RandomManager.h; sourceTree = "<group>"; };
 		19262D4D1DE9D5BE0086FDE0 /* RandomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RandomManager.m; path = Managers/RandomManager.m; sourceTree = "<group>"; };
+		192849161E05E8A000B120C1 /* OrganizationEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrganizationEditVC.h; path = ViewControllers/OrganizationEditVC/OrganizationEditVC.h; sourceTree = "<group>"; };
+		192849171E05E8A000B120C1 /* OrganizationEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrganizationEditVC.m; path = ViewControllers/OrganizationEditVC/OrganizationEditVC.m; sourceTree = "<group>"; };
 		19441A4F1E0331E70027A2DA /* OrganizationAddVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrganizationAddVC.h; path = ViewControllers/OrganizationAddVC/OrganizationAddVC.h; sourceTree = "<group>"; };
 		19441A501E0331E70027A2DA /* OrganizationAddVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrganizationAddVC.m; path = ViewControllers/OrganizationAddVC/OrganizationAddVC.m; sourceTree = "<group>"; };
 		19441A521E03FEC00027A2DA /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = Models/Category.h; sourceTree = "<group>"; };
@@ -256,6 +259,15 @@
 				11FBC34D1DED5D3500F3A996 /* MainWindow.m */,
 			);
 			name = MainWIndow;
+			sourceTree = "<group>";
+		};
+		192849151E05E86C00B120C1 /* OrganizationEditVC */ = {
+			isa = PBXGroup;
+			children = (
+				192849161E05E8A000B120C1 /* OrganizationEditVC.h */,
+				192849171E05E8A000B120C1 /* OrganizationEditVC.m */,
+			);
+			name = OrganizationEditVC;
 			sourceTree = "<group>";
 		};
 		19441A4E1E0331B30027A2DA /* OrganiztionAddVC */ = {
@@ -542,6 +554,7 @@
 				195500BD1DC7F7C100B33416 /* Login */,
 				11FBC34B1DED5D0F00F3A996 /* MainWIndow */,
 				196F8A511E055AEE0054A75F /* PaymentOptionsListVC */,
+				192849151E05E86C00B120C1 /* OrganizationEditVC */,
 				19441A4E1E0331B30027A2DA /* OrganiztionAddVC */,
 				1145EA8E1E026EBC003D4DE9 /* OrganizationsListVC */,
 				19441A591E0409B00027A2DA /* CategoryAddVC */,
@@ -773,6 +786,7 @@
 				19DA55631DC5FA7D00835979 /* AFAutoPurgingImageCache.m in Sources */,
 				198DEE3B1DD8FA400016F5C2 /* UserAddVC.m in Sources */,
 				19DA555F1DC5FA7D00835979 /* AFSecurityPolicy.m in Sources */,
+				192849181E05E8A000B120C1 /* OrganizationEditVC.m in Sources */,
 				198DEE441DD8FD430016F5C2 /* AccountAddVC.m in Sources */,
 				11FBC34A1DED5C1600F3A996 /* MyCustomSegue.m in Sources */,
 				19441A581E0401B10027A2DA /* CategoryListVC.m in Sources */,

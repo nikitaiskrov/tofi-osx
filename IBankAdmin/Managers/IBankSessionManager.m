@@ -173,6 +173,10 @@
             result = [result stringByAppendingFormat:@"/organizations/%ld", (long)ID];
             break;
             
+        case DeleteOrganization:
+            result = [result stringByAppendingFormat:@"/organizations/%ld/?session=%@", (long)ID, self.sessionID];
+            break;
+            
         case GetCategoriesList:
             result = [result stringByAppendingFormat:@"/categories/?session=%@", self.sessionID];
             break;
