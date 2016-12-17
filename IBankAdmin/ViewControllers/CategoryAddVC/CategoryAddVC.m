@@ -79,7 +79,7 @@
                                               NSAlert *alert = [NSAlert alertWithMessageText:@"Категория успешно добавлена"
                                                                                defaultButton:@"OK" alternateButton:nil
                                                                                  otherButton:nil
-                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                                                   informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               
                                               [alert runModal];

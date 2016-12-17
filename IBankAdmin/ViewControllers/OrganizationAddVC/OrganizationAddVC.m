@@ -222,7 +222,7 @@
                                               NSAlert *alert = [NSAlert alertWithMessageText:@"Организация успешно добавлена"
                                                                                defaultButton:@"OK" alternateButton:nil
                                                                                  otherButton:nil
-                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                                                   informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               
                                               [alert runModal];

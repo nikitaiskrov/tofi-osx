@@ -42,6 +42,8 @@
 @property (weak) IBOutlet NSTextField *SecretQuestionTextField;
 @property (weak) IBOutlet NSTextField *SecretAnswerTextField;
 
+- (IBAction)PopUpButtonDidChange:(id)sender;
+
 - (IBAction)SaveButtonOnClick:(NSButton *)sender;
 - (IBAction)BackButtonOnClick:(id)sender;
 

@@ -103,7 +103,7 @@
         }
         else if ([tableView tableColumns][1] == tableColumn)
         {
-            return [NSNumber numberWithUnsignedInteger:account.ClientID];
+            return (account.ClientID == -1) ? @"-" : [NSNumber numberWithUnsignedInteger:account.ClientID];
         }
         else if ([tableView tableColumns][2] == tableColumn)
         {
@@ -121,7 +121,12 @@
         {
             if (account.IsBlocked)
             {
-                return account.DateIsNull ? @"Навсегда" : [[iBankSessionManager GetFullDateFormatter] stringFromDate: account.BlockedDate];
+                NSDate *date = account.BlockedDate;
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                NSString *str =  [formatter stringFromDate:date];
+                
+                return account.DateIsNull ? @"Навсегда" : str;
             }
             else
             {

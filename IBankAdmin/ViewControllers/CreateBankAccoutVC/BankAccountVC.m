@@ -22,7 +22,7 @@
     BankAccount *account;
     bool isBlocked;
     NSInteger lastSelectedRowIndex;
-    NSString *cashAmount;
+    NSInteger cashAmount;
 }
 
 @end
@@ -135,7 +135,7 @@
             self.OwnerTypeInfoLabel.stringValue = @"Организация";
             break;
     }
-    self.NumberInfoLabel.integerValue = account.Number;
+    self.NumberInfoLabel.stringValue = [@(account.Number) stringValue];
     self.DateBlockedInfoLabel.stringValue = account.BlockExpiredAt;
     self.DateCreateInfoLabel.stringValue = account.CreatedAt;
     self.DateUpdateInfoLabel.stringValue = account.UpdatedAt;
@@ -266,7 +266,7 @@
                                               NSAlert *alert = [NSAlert alertWithMessageText:@"Статус аккаунта изменен"
                                                                                defaultButton:@"OK" alternateButton:nil
                                                                                  otherButton:nil
-                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                                                   informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               [alert runModal];
                                               
@@ -346,13 +346,13 @@
     
     NSString *URLString = [iBankSessionManager GetURLWithRequestType:CreateEnrollment parameterID:-1];
     
-    cashAmount = self.AddCashTextField.stringValue;
+    cashAmount = self.AddCashTextField.integerValue;
     NSDictionary *parameters = @{
                                  @"session" : iBankSessionManager.sessionID,
                                  @"payment":
                                  @{
                                          @"accountId":[@(iBankSessionManager.CurrentEditableBankAccountID) stringValue],
-                                         @"amount":cashAmount
+                                         @"amount":[@(cashAmount) stringValue]
                                    }
                                 };
 
@@ -385,11 +385,11 @@
                                               NSAlert *alert = [NSAlert alertWithMessageText:@"Деньги внесены на счет"
                                                                                defaultButton:@"OK" alternateButton:nil
                                                                                  otherButton:nil
-                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                                                   informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               [alert runModal];
                                               
-                                              self.BallanceInfoLabel.stringValue = cashAmount;
+                                              self.BallanceInfoLabel.integerValue += cashAmount;
                                           }
                                       }];
     

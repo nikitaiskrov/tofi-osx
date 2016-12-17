@@ -46,6 +46,9 @@
 - (void)fetchBankAccounts
 {
     iBankSessionManager = [IBankSessionManager manager];
+    
+    [DJProgressHUD showStatus:@"Загрузка" FromView:self.view];
+
     NSString *URLString = [iBankSessionManager GetURLWithRequestType:GetBankAccountsWithOwnerID parameterID:iBankSessionManager.CurrentEditableAccountID];
     
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:URLString parameters:nil error:nil];
@@ -125,7 +128,7 @@
         }
         else if ([tableView tableColumns][3] == tableColumn)
         {
-            return [NSNumber numberWithUnsignedInteger:bankAccount.Number];
+            return [@(bankAccount.Number) stringValue];
         }
         else if ([tableView tableColumns][4] == tableColumn)
         {

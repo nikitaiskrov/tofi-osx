@@ -21,6 +21,7 @@
 {
     IBankSessionManager *iBankSessionManager;
     NSViewController *mainWindowRootController;
+    NSInteger currentSelectedPopUpMenuButtonIndex;
 }
 
 @end
@@ -60,7 +61,6 @@
     self.PassportTextField.stringValue = [randomManager randomStringNumberWithLength:10];
     self.NationalityTextField.stringValue = @"Грек";
     self.BirthdayTextField.objectValue = @"1994-10-10";
-    self.SexTextField.stringValue = @"m";
     self.IdentificationTextField.stringValue = [randomManager randomStringNumberWithLength:10];
     self.PlaceOfBirthTextField.stringValue = @"Test";
     self.DateOfIssueTextField.objectValue = @"2010-10-10";
@@ -70,6 +70,14 @@
     self.SecretAnswerTextField.objectValue = @"Петрова";
 }
 
+
+
+#pragma mark - Button Actions
+
+- (IBAction)PopUpButtonDidChange:(id)sender
+{
+    currentSelectedPopUpMenuButtonIndex = [sender indexOfSelectedItem];
+}
 
 
 - (IBAction)SaveButtonOnClick:(NSButton *)sender
@@ -88,7 +96,7 @@
                                          @"passportNumber": self.PassportTextField.stringValue,
                                          @"nationality": self.NationalityTextField.stringValue,
                                          @"birthday": self.BirthdayTextField.stringValue,
-                                         @"sex": self.SexTextField.stringValue,
+                                         @"sex": (currentSelectedPopUpMenuButtonIndex == 0) ? @"m" : @"f",
                                          @"identification": self.IdentificationTextField.stringValue,
                                          @"placeOfBirth": self.PlaceOfBirthTextField.stringValue,
                                          @"passportDateOfIssue": self.DateOfIssueTextField.stringValue,
@@ -135,7 +143,7 @@
                                               NSAlert *alert = [NSAlert alertWithMessageText:@"Клиент успешно добавлен. Создайте для него аккаунт."
                                                                                defaultButton:@"OK" alternateButton:nil
                                                                                  otherButton:nil
-                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                                                   informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               
                                               [alert runModal];
@@ -144,6 +152,7 @@
     
     [dataTask resume];
 }
+
 
 - (IBAction)BackButtonOnClick:(id)sender
 {
@@ -158,7 +167,6 @@
     
     [mainWindowRootController presentViewController:userEdit animator:animator];
 }
-
 
 
 - (void)SwitchViewControllers

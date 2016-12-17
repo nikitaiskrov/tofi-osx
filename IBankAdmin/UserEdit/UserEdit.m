@@ -22,6 +22,7 @@
     Account *account;
     User *user;
     NSViewController *mainWindowRootController;
+    NSInteger currentSelectedPopUpMenuButtonIndex;
 }
 
 @end
@@ -74,15 +75,14 @@
         self.PhoneTextField.stringValue = user.PhoneNumber;
         self.PassportTextField.stringValue = user.PassportNumber;
         self.NationalityTextField.stringValue = user.Nationality;
-        self.BirthdayTextField.objectValue = user.Birthday;
-        self.SexTextField.stringValue = user.Sex;
+        self.BirthdayTextField.stringValue = [[iBankSessionManager GetDateFormatter] stringFromDate:user.Birthday];
         self.IdentificationTextField.integerValue = user.Identification;
         self.PlaceOfBirthTextField.stringValue = user.PlaceOfBirth;
-        self.DateOfIssueTextField.objectValue = user.PassportDateIssuse;
-        self.DateOfExpirationTextField.objectValue = user.PassportDateExpiry;
+        self.DateOfIssueTextField.objectValue = [[iBankSessionManager GetDateFormatter] stringFromDate:user.PassportDateIssuse];
+        self.DateOfExpirationTextField.objectValue = [[iBankSessionManager GetDateFormatter] stringFromDate:user.PassportDateExpiry];
         self.AuthorityTextField.stringValue = user.Authority;
-        self.DateAddedTextField.objectValue = user.CreatedAt;
-        self.DateUpdateTextField.objectValue = user.UpdatedAt;
+        self.DateAddedTextField.objectValue = [[iBankSessionManager GetDateFormatter] stringFromDate:user.CreatedAt];
+        self.DateUpdateTextField.objectValue = [[iBankSessionManager GetDateFormatter] stringFromDate:user.UpdatedAt];
         
         
         account = nil;
@@ -128,10 +128,13 @@
 
 - (void)ChechAccountToCurrentClent
 {
+    [self.BankAccountsButton setEnabled:true];
+
     if (account == nil)
     {
         self.ChangeStatusButton.title = @"Cоздать аккаунт";
-        self.StatusChangebleLabel.stringValue = @"Не создан для текущего клиента";
+        self.StatusChangebleLabel.stringValue = @"Не создан для текущего клиента. Для работы с карт-счетами клиента создайте для него аккаунт.";
+        [self.BankAccountsButton setEnabled:false];
     }
 }
 
@@ -179,7 +182,7 @@
                                               NSAlert *alert = [NSAlert alertWithMessageText:@"Статус аккаунта изменен"
                                                                                defaultButton:@"OK" alternateButton:nil
                                                                                  otherButton:nil
-                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                                                   informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               [alert runModal];
                                               
@@ -227,7 +230,7 @@
                                          @"passportNumber": self.PassportTextField.stringValue,
                                          @"nationality": self.NationalityTextField.stringValue,
                                          @"birthday": self.BirthdayTextField.objectValue,
-                                         @"sex": self.SexTextField.stringValue,
+                                         @"sex": (currentSelectedPopUpMenuButtonIndex == 0) ? @"m" : @"f",
                                          @"identification": self.IdentificationTextField.stringValue,
                                          @"placeOfBirth": self.PlaceOfBirthTextField.stringValue,
                                          @"passportDateOfIssue": self.DateOfIssueTextField.objectValue,
@@ -267,7 +270,7 @@
                                               NSAlert *alert = [NSAlert alertWithMessageText:@"Сохранение совершено успешно"
                                                                                defaultButton:@"OK" alternateButton:nil
                                                                                  otherButton:nil
-                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                                                   informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               
                                               [alert runModal];
@@ -304,6 +307,12 @@
     }
     
     [mainWindowRootController presentViewController:userEdit animator:animator];
+}
+
+
+- (IBAction)PopUpButtonSelectionDidChange:(id)sender
+{
+    currentSelectedPopUpMenuButtonIndex = [sender indexOfSelectedItem];
 }
 
 @end

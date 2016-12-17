@@ -94,7 +94,7 @@
                                               NSAlert *alert = [NSAlert alertWithMessageText:@"Аккаунт успешно добавлен"
                                                                                defaultButton:@"OK" alternateButton:nil
                                                                                  otherButton:nil
-                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                                                   informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               
                                               [alert runModal];

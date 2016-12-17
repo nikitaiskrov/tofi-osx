@@ -21,7 +21,7 @@
             self.ID = [[dictionary valueForKey:@"id"] integerValue];
             self.ClientID = ([NSNull null] != [dictionary valueForKey:@"clientId"]) ? [[dictionary valueForKey:@"clientId"] integerValue] : -1;
             self.Username = [[dictionary valueForKey:@"username"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            self.Role = [dictionary valueForKey:@"role"];
+            self.Role = ([[dictionary valueForKey:@"role"] integerValue] == 1) ? @"Администратор" : @"Пользователь";
             self.IsBlockedString = [[dictionary valueForKey:@"blocked"] boolValue] ? @"Заблокирован" : @"Активен";
             self.IsBlocked = [[dictionary valueForKey:@"blocked"] boolValue];
             

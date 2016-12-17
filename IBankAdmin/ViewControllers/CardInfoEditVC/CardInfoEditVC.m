@@ -79,7 +79,7 @@
                                               NSAlert *alert = [NSAlert alertWithMessageText:@"Информация по карте изменена"
                                                                                defaultButton:@"OK" alternateButton:nil
                                                                                  otherButton:nil
-                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                                                   informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               [alert runModal];
                                           }
@@ -137,7 +137,7 @@
                                               NSAlert *alert = [NSAlert alertWithMessageText:@"Информация по карте изменена"
                                                                                defaultButton:@"OK" alternateButton:nil
                                                                                  otherButton:nil
-                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                                                   informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               [alert runModal];
                                           }

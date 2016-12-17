@@ -59,9 +59,11 @@
 @property (weak) IBOutlet NSTextField *NewPasswordRepeatTextField;
 
 @property (weak) IBOutlet NSButton *ChangeStatusButton;
+@property (weak) IBOutlet NSButton *BankAccountsButton;
 
 - (IBAction)SaveButtonOnClic:(NSButton *)sender;
 - (IBAction)ChangeStatusButtonOnClick:(id)sender;
 - (IBAction)BankAccountsButtonOnClick:(id)sender;
+- (IBAction)PopUpButtonSelectionDidChange:(id)sender;
 
 @end

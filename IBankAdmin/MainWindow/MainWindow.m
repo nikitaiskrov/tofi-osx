@@ -92,6 +92,8 @@
                                                   
                                                   [iBankSessionManager.Accounts addObject:account];
                                               }
+                                              
+                                              [self fetchClients];
                                           }
                                       }];
     
