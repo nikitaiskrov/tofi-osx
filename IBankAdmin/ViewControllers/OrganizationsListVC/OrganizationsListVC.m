@@ -77,9 +77,9 @@
                                               
                                               for (NSInteger i = 0; i < organizationsFromServer.count; i++)
                                               {
-                                                  Organization *user = [[Organization alloc] initWIthDictionary:(NSDictionary *)organizationsFromServer[i]];
+                                                  Organization *organization = [[Organization alloc] initWIthDictionary:(NSDictionary *)organizationsFromServer[i]];
                                                   
-                                                  [iBankSessionManager.Organizations addObject:user];
+                                                  [iBankSessionManager.Organizations addObject:organization];
                                               }
                                               
                                               [self.TableView reloadData];
@@ -148,6 +148,7 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
+    // fix head select
 //    lastSelectedRowIndex = [[notification object] selectedRow];
 //    iBankSessionManager.CurrentEditableUserID = ((User *)iBankSessionManager.Users[lastSelectedRowIndex]).ID;
 //    

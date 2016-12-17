@@ -22,7 +22,8 @@ typedef enum OwnerType
 @property (readwrite, nonatomic) OwnerType OwnerType;
 @property (readwrite, nonatomic) NSInteger Number;
 @property (readwrite, nonatomic) BOOL IsBlocked;
-@property (readwrite, nonatomic) NSString *BlockExpiredAt;
+@property (readwrite, nonatomic) BOOL DateIsNull;
+@property (readwrite, nonatomic) NSDate *BlockExpiredAt;
 @property (readwrite, nonatomic) NSString *CreatedAt;
 @property (readwrite, nonatomic) NSString *UpdatedAt;
 @property (readwrite, nonatomic) float Balance;

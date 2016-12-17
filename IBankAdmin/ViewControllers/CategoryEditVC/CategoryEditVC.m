@@ -13,12 +13,14 @@
 #import "MyCustomAnimator.h"
 #import "LoginVC.h"
 #import "Category.h"
+#import "Organization.h"
 
 @interface CategoryEditVC ()
 {
     NSViewController *mainWindowRootController;
     IBankSessionManager *iBankSessionManager;
     Category *category;
+    NSInteger lastSelectedRowIndex;
 }
 @end
 
@@ -35,6 +37,8 @@
 - (void)viewWillAppear
 {
     [self PrepareTextFields];
+    
+    [self FetchOrganizations];
 }
 
 
@@ -71,6 +75,93 @@
     }
     
     [mainWindowRootController presentViewController:userEdit animator:animator];
+}
+
+
+- (void)FetchOrganizations
+{
+    [super viewWillAppear];
+    
+    if (lastSelectedRowIndex > 0)
+    {
+        [self.TableView deselectRow:lastSelectedRowIndex];
+    }
+    
+    [DJProgressHUD showStatus:@"Загрузка" FromView:self.view];
+    
+    iBankSessionManager = [IBankSessionManager manager];
+    NSString *URLString = [iBankSessionManager GetURLWithRequestType:GetOrganizationListWithCategoryID parameterID:iBankSessionManager.CurrentEditableCategoryID];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:URLString parameters:nil error:nil];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error)
+                                      {
+                                          if (error)
+                                          {
+                                              [DJProgressHUD dismiss];
+                                              
+                                              NSAlert *alert = [NSAlert alertWithMessageText:@"Ошибка"
+                                                                               defaultButton:@"OK"
+                                                                             alternateButton:nil
+                                                                                 otherButton:nil
+                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                              
+                                              [alert runModal];
+                                          }
+                                          else
+                                          {
+                                              
+                                              NSArray *organizationsFromServer = (NSArray *)[(NSDictionary *)responseObject valueForKey:@"organizations"];
+                                              [iBankSessionManager.Organizations removeAllObjects];
+                                              
+                                              for (NSInteger i = 0; i < organizationsFromServer.count; i++)
+                                              {
+                                                  Organization *organization = [[Organization alloc] initWIthDictionary:(NSDictionary *)organizationsFromServer[i]];
+                                                  
+                                                  [iBankSessionManager.Organizations addObject:organization];
+                                              }
+                                              
+                                              [self.TableView reloadData];
+                                              [DJProgressHUD dismiss];
+                                          }
+                                      }];
+    
+    [dataTask resume];
+
+}
+
+
+
+#pragma mark - TableView Delegate
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+    if (tableView == self.TableView)
+    {
+        return iBankSessionManager.Organizations.count;
+    }
+    
+    return 0;
+}
+
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    if(tableView == self.TableView)
+    {
+        Organization *organization = [iBankSessionManager.Organizations objectAtIndex:row];
+        
+        if ([tableView tableColumns][0] == tableColumn)
+        {
+            return organization.Name;
+        }
+    }
+    
+    return  nil;
 }
 
 

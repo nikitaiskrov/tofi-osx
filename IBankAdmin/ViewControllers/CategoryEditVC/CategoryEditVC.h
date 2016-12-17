@@ -11,6 +11,7 @@
 @interface CategoryEditVC : NSViewController
 
 @property (weak) IBOutlet NSTextField *NameTextField;
+@property (weak) IBOutlet NSTableView *TableView;
 
 - (IBAction)BackButtonOnClick:(id)sender;
 - (IBAction)SaveButtonOnClick:(id)sender;

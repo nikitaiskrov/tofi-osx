@@ -2985,10 +2985,10 @@
             </objects>
             <point key="canvasLocation" x="3571" y="716.5"/>
         </scene>
-        <!--Информация о карт-счете-->
+        <!--Карта-->
         <scene sceneID="TSg-3u-cjX">
             <objects>
-                <viewController title="Информация о карт-счете" storyboardIdentifier="CardInfoEditVC" id="i18-0h-zrb" customClass="CardInfoEditVC" sceneMemberID="viewController">
+                <viewController title="Карта" storyboardIdentifier="CardInfoEditVC" id="i18-0h-zrb" customClass="CardInfoEditVC" sceneMemberID="viewController">
                     <view key="view" id="zWb-Db-zoF">
                         <rect key="frame" x="0.0" y="0.0" width="1044" height="675"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3169,6 +3169,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="CardInfoButton" destination="FcU-xF-bMN" id="l8m-42-EdR"/>
                         <outlet property="ChangeStatusButton" destination="FcU-xF-bMN" id="7Pq-YZ-mT2"/>
                         <outlet property="FirstLimitTextField" destination="Mll-oq-lri" id="3Zg-6c-QVW"/>
                         <outlet property="FourLimitTextField" destination="aGT-jF-HGc" id="dvT-Qa-iQU"/>
@@ -3923,10 +3924,68 @@
                                     <action selector="DeleteCurrentCategoryButtonOnClick:" target="Cnv-gr-Otg" id="c5x-V6-SUF"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fem-9Y-Ntx">
+                                <rect key="frame" x="523" y="539" width="472" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Внимание! После удаления тукущей категории следующие организации будут недоступны в мобильном приложении:" id="gv6-qk-7bL">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2b-3J-FFJ">
+                                <rect key="frame" x="525" y="20" width="468" height="511"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <clipView key="contentView" ambiguous="YES" id="Jp3-9a-esV">
+                                    <rect key="frame" x="1" y="23" width="466" height="487"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="36" headerView="otG-Ku-8db" id="DVk-IC-9ec">
+                                            <rect key="frame" x="0.0" y="0.0" width="466" height="487"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="463" minWidth="40" maxWidth="1000" id="CFR-nI-5I4">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Имя">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="MHa-3Q-t5N">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="Cnv-gr-Otg" id="ljE-fM-aSV"/>
+                                                <outlet property="delegate" destination="Cnv-gr-Otg" id="40J-gn-hRA"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Lid-W6-PT3">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="1pn-xn-Ufi">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="otG-Ku-8db">
+                                    <rect key="frame" x="0.0" y="0.0" width="466" height="23"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="NameTextField" destination="6dl-ad-N6O" id="Vwm-nu-h3K"/>
+                        <outlet property="TableView" destination="DVk-IC-9ec" id="nwZ-sV-i7w"/>
                     </connections>
                 </viewController>
                 <customObject id="Yof-ES-A2e" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

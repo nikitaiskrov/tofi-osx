@@ -149,6 +149,7 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
+    //fix head select
 //    iBankSessionManager.CurrentEditableAccountID = [[notification object] selectedRow];
 //    lastSelectedRowIndex = [[notification object] selectedRow];
 //    

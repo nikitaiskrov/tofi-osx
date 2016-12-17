@@ -153,12 +153,20 @@
             result = [result stringByAppendingString:@"/card/limits"];
             break;
             
+        case UpdateCardLimits:
+            result = [result stringByAppendingString:@""];
+            break;
+            
         case GetOrganizationsList:
             result = [result stringByAppendingFormat:@"/organizations/?session=%@", self.sessionID];
             break;
             
         case CreateOrganization:
             result = [result stringByAppendingString:@"/organizations"];
+            break;
+            
+        case GetOrganizationListWithCategoryID:
+            result = [result stringByAppendingFormat:@"/organizations/categories/%ld?session=%@", (long)ID, self.sessionID];
             break;
             
         case UpdateOrganization:

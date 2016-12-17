@@ -149,25 +149,29 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-    Account *selectedAccount = iBankSessionManager.Accounts[[[notification object] selectedRow]];
-    NSInteger clientID = selectedAccount.ClientID;
-    
-    if (clientID > 0)
+    NSInteger index = [[notification object] selectedRow];
+    if (index >= 0)
     {
-        iBankSessionManager.CurrentEditableUserID = selectedAccount.ClientID;
-        iBankSessionManager.CurrentEditableAccountID = selectedAccount.ID;
-        lastSelectedRowIndex = [[notification object] selectedRow];
+        Account *selectedAccount = iBankSessionManager.Accounts[index];
+        NSInteger clientID = selectedAccount.ClientID;
         
-        NSStoryboard *sb = [self storyboard];
-        id animator = [[MyCustomAnimator alloc] init];
-        NSViewController *userEdit = [sb instantiateControllerWithIdentifier:@"UserEdit"];
-        
-        if (mainWindowRootController == nil)
+        if (clientID > 0)
         {
-            mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+            iBankSessionManager.CurrentEditableUserID = selectedAccount.ClientID;
+            iBankSessionManager.CurrentEditableAccountID = selectedAccount.ID;
+            lastSelectedRowIndex = [[notification object] selectedRow];
+            
+            NSStoryboard *sb = [self storyboard];
+            id animator = [[MyCustomAnimator alloc] init];
+            NSViewController *userEdit = [sb instantiateControllerWithIdentifier:@"UserEdit"];
+            
+            if (mainWindowRootController == nil)
+            {
+                mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+            }
+            
+            [mainWindowRootController presentViewController:userEdit animator:animator];
         }
-        
-        [mainWindowRootController presentViewController:userEdit animator:animator];
     }
 }
 

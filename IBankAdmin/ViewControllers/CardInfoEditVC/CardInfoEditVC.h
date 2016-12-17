@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSTextField *SecondLimitTextField;
 @property (weak) IBOutlet NSTextField *ThirdLimitTextField;
 @property (weak) IBOutlet NSTextField *FourLimitTextField;
+@property (weak) IBOutlet NSButton *CardInfoButton;
 
 - (IBAction)CartTypePopUpButtonChange:(id)sender;
 - (IBAction)CardInfoSaveChangesButonOnClick:(id)sender;

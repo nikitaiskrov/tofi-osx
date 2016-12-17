@@ -28,9 +28,7 @@
             self.PhoneNumber = [[dictionary valueForKey:@"phoneNumber"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             self.PassportNumber = [[dictionary valueForKey:@"passportNumber"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             self.Nationality = [[dictionary valueForKey:@"nationality"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSString *str = [dictionary valueForKey:@"birthday"];
-            NSDate *date = [formatter dateFromString:str];
-            self.Birthday = date;
+            self.Birthday = [formatter dateFromString:[dictionary valueForKey:@"birthday"]];
             self.Sex = [[dictionary valueForKey:@"sex"] isEqualToString:@"m"] ? @"Мужской" : @"Женский";
             self.Identification = [[dictionary valueForKey:@"identification"] integerValue];
             self.PlaceOfBirth = [[dictionary valueForKey:@"placeOfBirth"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

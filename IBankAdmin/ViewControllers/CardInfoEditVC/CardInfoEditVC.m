@@ -20,6 +20,7 @@
     IBankSessionManager *iBankSessionManager;
     NSViewController *mainWindowRootController;
     NSInteger currentSelectedPopUpMenuButtonIndex;
+    Card *card;
 }
 
 @end
@@ -31,6 +32,39 @@
     [super viewDidLoad];
     
     iBankSessionManager = [IBankSessionManager manager];
+}
+
+
+- (void)viewWillAppear
+{
+    card = nil;
+    for (NSInteger i = 0; i < iBankSessionManager.Cards.count; i++)
+    {
+        if (((Card *)iBankSessionManager.Cards[i]).ID == iBankSessionManager.CurrentEditableCardID)
+        {
+            card = ((Card *)iBankSessionManager.Cards[i]);
+            break;
+        }
+    }
+    
+    NSString *cardNumber = card.LastFourNumbers;
+    
+    if (![cardNumber isMemberOfClass:[NSNull class]])
+    {
+        [self.CardInfoButton setEnabled:false];
+    }
+    
+    [self prepareTextFields];
+}
+
+
+- (void)prepareTextFields
+{
+    self.OwnerNameTextField.stringValue = card.OwnerName;
+    self.FirstLimitTextField.stringValue = card.CashAmountLimit;
+    self.SecondLimitTextField.stringValue = card.CashAttemptsLimit;
+    self.ThirdLimitTextField.stringValue = card.CashlessAmountLimit;
+    self.FourLimitTextField.stringValue = card.CashlessAttemptsLimit;
 }
 
 
@@ -147,6 +181,12 @@
 }
 
 
+- (void)updateCardLimits
+{
+    
+}
+
+
 
 #pragma mark - Actions
 
@@ -155,14 +195,26 @@
     currentSelectedPopUpMenuButtonIndex = [sender indexOfSelectedItem];
 }
 
+
 - (IBAction)CardInfoSaveChangesButonOnClick:(id)sender
 {
     [self createCardInfo];
 }
 
+
 - (IBAction)CardLimitsSaveChangesButtonOnClick:(id)sender
 {
-    [self createCardLimits];
+    if (![card.CashAttemptsLimit  isEqual: @""] ||
+        ![card.CashAmountLimit isEqual:@""] ||
+        ![card.CashlessAttemptsLimit isEqual:@""] ||
+        ![card.CashlessAmountLimit isEqual:@""])
+    {
+        NSLog(@"Need update");
+    }
+    else
+    {
+        [self createCardLimits];
+    }
 }
 
 - (IBAction)BackButtonOnClick:(id)sender

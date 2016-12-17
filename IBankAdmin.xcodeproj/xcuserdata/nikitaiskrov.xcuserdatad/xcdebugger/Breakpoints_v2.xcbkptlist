@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IBankAdmin/BankAccountList/BankAccountListVC.m"
-            timestampString = "503692972.847269"
+            timestampString = "503701509.744037"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-AddNewBankAccountButtonOnClick:"
             landmarkType = "7">
          </BreakpointContent>
@@ -157,6 +157,22 @@
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IBankAdmin/ViewControllers/CardInfoEditVC/CardInfoEditVC.m"
+            timestampString = "503701098.774224"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "-CardLimitsSaveChangesButtonOnClick:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

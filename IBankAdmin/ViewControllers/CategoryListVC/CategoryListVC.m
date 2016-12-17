@@ -134,7 +134,10 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-        lastSelectedRowIndex = [[notification object] selectedRow];
+    NSInteger index = [[notification object] selectedRow];
+    if (index >= 0)
+    {
+        lastSelectedRowIndex = index;
         iBankSessionManager.CurrentEditableCategoryID = ((Category *)iBankSessionManager.Categories[lastSelectedRowIndex]).ID;
     
         NSStoryboard *sb = [self storyboard];
@@ -147,6 +150,7 @@
         }
     
         [mainWindowRootController presentViewController:userEdit animator:animator];
+    }
 }
 
 

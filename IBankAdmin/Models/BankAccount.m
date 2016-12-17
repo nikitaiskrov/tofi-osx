@@ -32,7 +32,23 @@
             
             self.Number = [[dictionary valueForKey:@"number"] integerValue];
             self.IsBlocked = [[dictionary valueForKey:@"blocked"] boolValue];
-            self.BlockExpiredAt = [dictionary valueForKey:@"blockExpiredAt"];
+            
+            if (self.IsBlocked && [NSNull null] == [dictionary valueForKey:@"blockExpiredAt"]) {
+                self.DateIsNull = YES;
+            } else {
+                self.DateIsNull = NO;
+            }
+            
+            if ([NSNull null] != [dictionary valueForKey:@"blockExpiredAt"])
+            {
+                NSInteger seconds = [[dictionary valueForKey:@"blockExpiredAt"] integerValue];
+                self.BlockExpiredAt = [NSDate dateWithTimeIntervalSince1970:seconds];
+            }
+            else
+            {
+                self.BlockExpiredAt = [NSDate date];
+            }
+            
             self.Balance = [[dictionary valueForKey:@"balance"] floatValue];
             self.Currency = [dictionary valueForKey:@"currency"];
             self.CreatedAt = [dictionary valueForKey:@"createdAt"];

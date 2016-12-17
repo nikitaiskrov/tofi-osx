@@ -136,7 +136,20 @@
         }
         else if ([tableView tableColumns][5] == tableColumn)
         {
-            return bankAccount.BlockExpiredAt;
+            if (bankAccount.IsBlocked)
+            {
+                NSDate *date = bankAccount.BlockExpiredAt;
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                NSString *str =  [formatter stringFromDate:date];
+                
+                return bankAccount.DateIsNull ? @"Навсегда" : str;
+            }
+            else
+            {
+                return @"-";
+            }
+
         }
         else if ([tableView tableColumns][6] == tableColumn)
         {
@@ -162,24 +175,28 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-    BankAccount *selectedAccount = iBankSessionManager.BankAccounsts[[[notification object] selectedRow]];
-    NSInteger selectedAccountID = selectedAccount.ID;
-    
-    if (selectedAccountID > 0)
+    NSInteger index = [[notification object] selectedRow];
+    if (index >= 0)
     {
-        iBankSessionManager.CurrentEditableBankAccountID = selectedAccountID;
-        lastSelectedRowIndex = [[notification object] selectedRow];
+        BankAccount *selectedAccount = iBankSessionManager.BankAccounsts[index];
+        NSInteger selectedAccountID = selectedAccount.ID;
         
-        NSStoryboard *sb = [self storyboard];
-        id animator = [[MyCustomAnimator alloc] init];
-        NSViewController *userEdit = [sb instantiateControllerWithIdentifier:@"BankAccountVC"];
-        
-        if (mainWindowRootController == nil)
+        if (selectedAccountID > 0)
         {
-            mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+            iBankSessionManager.CurrentEditableBankAccountID = selectedAccountID;
+            lastSelectedRowIndex = [[notification object] selectedRow];
+            
+            NSStoryboard *sb = [self storyboard];
+            id animator = [[MyCustomAnimator alloc] init];
+            NSViewController *userEdit = [sb instantiateControllerWithIdentifier:@"BankAccountVC"];
+            
+            if (mainWindowRootController == nil)
+            {
+                mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+            }
+            
+            [mainWindowRootController presentViewController:userEdit animator:animator];
         }
-        
-        [mainWindowRootController presentViewController:userEdit animator:animator];
     }
 }
 
