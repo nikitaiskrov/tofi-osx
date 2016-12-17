@@ -189,6 +189,20 @@
     return result;
 }
 
+- (NSDateFormatter *)GetFullDateFormatter
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    return formatter;
+}
+
+- (NSDateFormatter *)GetDateFormatter
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    return formatter;
+}
+
 @end
 
 

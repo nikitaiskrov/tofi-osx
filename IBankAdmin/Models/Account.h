@@ -16,6 +16,7 @@
 @property (readwrite, nonatomic) NSString *Role;
 @property (readwrite, nonatomic) NSString *IsBlockedString;
 @property (readwrite, nonatomic) BOOL IsBlocked;
+@property (readwrite, nonatomic) BOOL DateIsNull;
 @property (readwrite, nonatomic) NSDate *BlockedDate;
 @property (readwrite, nonatomic) NSDate *CreatedAt;
 @property (readwrite, nonatomic) NSDate *UpdatedAt;

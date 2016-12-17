@@ -24,8 +24,22 @@
             self.Role = [dictionary valueForKey:@"role"];
             self.IsBlockedString = [[dictionary valueForKey:@"blocked"] boolValue] ? @"Заблокирован" : @"Активен";
             self.IsBlocked = [[dictionary valueForKey:@"blocked"] boolValue];
-#pragma warning fix
-            self.BlockedDate = ([NSNull null] != [dictionary valueForKey:@"blockExpiredAt"]) ? [dictionary valueForKey:@"blockExpiredAt"] : [NSDate date];
+            
+            if (self.IsBlocked && [NSNull null] == [dictionary valueForKey:@"blockExpiredAt"]) {
+                self.DateIsNull = YES;
+            } else {
+                self.DateIsNull = NO;
+            }
+            
+            if ([NSNull null] != [dictionary valueForKey:@"blockExpiredAt"])
+            {
+                NSInteger seconds = [[dictionary valueForKey:@"blockExpiredAt"] integerValue];
+                self.BlockedDate = [NSDate dateWithTimeIntervalSince1970:seconds];
+            }
+            else
+            {
+                self.BlockedDate = [NSDate date];
+            }
             self.CreatedAt = [dictionary valueForKey:@"createdAt"];
             self.UpdatedAt = [dictionary valueForKey:@"updatedAt"];
         }

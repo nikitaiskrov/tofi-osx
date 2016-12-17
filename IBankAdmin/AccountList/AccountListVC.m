@@ -119,7 +119,14 @@
         }
         else if ([tableView tableColumns][5] == tableColumn)
         {
-            return account.BlockedDate;
+            if (account.IsBlocked)
+            {
+                return account.DateIsNull ? @"Навсегда" : [[iBankSessionManager GetFullDateFormatter] stringFromDate: account.BlockedDate];
+            }
+            else
+            {
+                return @"-";
+            }
         }
         else if ([tableView tableColumns][6] == tableColumn)
         {
@@ -158,6 +165,5 @@
         [mainWindowRootController presentViewController:userEdit animator:animator];
     }
 }
-
 
 @end

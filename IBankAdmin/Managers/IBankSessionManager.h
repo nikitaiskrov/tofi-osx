@@ -74,5 +74,7 @@ typedef enum RequestType
 + (id)manager;
 
 - (NSString *)GetURLWithRequestType:(RequestType)requestType parameterID:(NSInteger)clientID;
+- (NSDateFormatter *)GetFullDateFormatter;
+- (NSDateFormatter *)GetDateFormatter;
 
 @end
