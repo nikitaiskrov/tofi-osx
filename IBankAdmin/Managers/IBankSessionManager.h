@@ -26,11 +26,13 @@ typedef enum RequestType
     CreateBankAccount,
     ChangeBankAccountStatus,
     GetAllCardsForAccount,
+    GetCardWithID,
     CreateEnrollment,
     CreateCard,
     CreateCardInfo,
     CreateCardLimits,
     UpdateCardLimits,
+    ChageCardStatus,
     GetOrganizationsList,
     GetOrganizationListWithCategoryID,
     CreateOrganization,
@@ -41,6 +43,8 @@ typedef enum RequestType
     UpdateCategory,
     DeleteCategory,
     GetPaymentOptionsList,
+    CreatePaymetOption,
+    UpdatePaymetOption,
     DeletePaymentOption
 } RequestType;
 
@@ -71,7 +75,7 @@ typedef enum RequestType
 @property (nonatomic, assign) NSInteger CurrentEditableCategoryID;
 
 @property (nonatomic, strong) NSMutableArray *PaymentOptions;
-@property (nonatomic, assign) NSInteger CurrentEditablePaymentOption;
+@property (nonatomic, assign) NSInteger CurrentEditablePaymentOptionID;
 
 + (id)manager;
 

@@ -117,9 +117,13 @@
         }
         else if ([tableView tableColumns][1] == tableColumn)
         {
-            return option.Type;
+            return option.FieldID;
         }
         else if ([tableView tableColumns][2] == tableColumn)
+        {
+            return option.Type;
+        }
+        else if ([tableView tableColumns][3] == tableColumn)
         {
             return option.ActionDescription;
         }
@@ -133,8 +137,41 @@
 }
 
 
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    lastSelectedRowIndex = [[notification object] selectedRow];
+    if (lastSelectedRowIndex >= 0)
+    {
+        iBankSessionManager.CurrentEditablePaymentOptionID = ((PaymentOption *)iBankSessionManager.PaymentOptions[lastSelectedRowIndex]).ID;
+        
+        NSStoryboard *sb = [self storyboard];
+        id animator = [[MyCustomAnimator alloc] init];
+        NSViewController *userEdit = [sb instantiateControllerWithIdentifier:@"PaymentOptionEditVC"];
+        
+        if (mainWindowRootController == nil)
+        {
+            mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+        }
+        
+        [mainWindowRootController presentViewController:userEdit animator:animator];
+    }
+}
+
+
+
+#pragma mark - Button Actions
 
 - (IBAction)AddPaymentOptionButtonOnClick:(id)sender
 {
+    NSStoryboard *sb = [self storyboard];
+    id animator = [[MyCustomAnimator alloc] init];
+    NSViewController *userEdit = [sb instantiateControllerWithIdentifier:@"PaymentOptionAddVC"];
+    
+    if (mainWindowRootController == nil)
+    {
+        mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+    }
+    
+    [mainWindowRootController presentViewController:userEdit animator:animator];
 }
 @end

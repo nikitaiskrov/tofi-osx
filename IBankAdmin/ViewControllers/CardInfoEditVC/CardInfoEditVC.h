@@ -17,9 +17,15 @@
 @property (weak) IBOutlet NSTextField *FourLimitTextField;
 @property (weak) IBOutlet NSButton *CardInfoButton;
 
+@property (weak) IBOutlet NSTextField *StatusLabel;
+@property (weak) IBOutlet NSTextField *BlockDateLabel;
+@property (weak) IBOutlet NSTextField *BlockOnHoursTextField;
+@property (weak) IBOutlet NSButton *ChangeStatusButton;
+
 - (IBAction)CartTypePopUpButtonChange:(id)sender;
 - (IBAction)CardInfoSaveChangesButonOnClick:(id)sender;
 - (IBAction)CardLimitsSaveChangesButtonOnClick:(id)sender;
 - (IBAction)BackButtonOnClick:(id)sender;
+- (IBAction)BlockButtonOnClick:(id)sender;
 
 @end

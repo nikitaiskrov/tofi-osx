@@ -13,7 +13,8 @@
 @property (readwrite, nonatomic) NSInteger ID;
 @property (readwrite, nonatomic) NSInteger AccountID;
 @property (readwrite, nonatomic) BOOL IsBlocked;
-@property (readwrite, nonatomic) NSString *BlockExpiredAt;
+@property (readwrite, nonatomic) BOOL DateIsNull;
+@property (readwrite, nonatomic) NSDate *BlockExpiredAt;
 @property (readwrite, nonatomic) NSString *CreatedAt;
 @property (readwrite, nonatomic) NSString *LastFourNumbers;
 @property (readwrite, nonatomic) NSString *ExpiredAt;

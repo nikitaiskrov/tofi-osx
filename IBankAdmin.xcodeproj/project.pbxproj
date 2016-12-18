@@ -16,6 +16,8 @@
 		192613171DF40EAE00B83115 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 192613151DF40EAE00B83115 /* Main.storyboard */; };
 		19262D4E1DE9D5BE0086FDE0 /* RandomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19262D4D1DE9D5BE0086FDE0 /* RandomManager.m */; };
 		192849181E05E8A000B120C1 /* OrganizationEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 192849171E05E8A000B120C1 /* OrganizationEditVC.m */; };
+		1928491D1E06877A00B120C1 /* PaymentOptionAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1928491C1E06877A00B120C1 /* PaymentOptionAddVC.m */; };
+		192849211E068A1100B120C1 /* PaymentOptionEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 192849201E068A1100B120C1 /* PaymentOptionEditVC.m */; };
 		19441A511E0331E70027A2DA /* OrganizationAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19441A501E0331E70027A2DA /* OrganizationAddVC.m */; };
 		19441A541E03FEC00027A2DA /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 19441A531E03FEC00027A2DA /* Category.m */; };
 		19441A581E0401B10027A2DA /* CategoryListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 19441A571E0401B10027A2DA /* CategoryListVC.m */; };
@@ -102,6 +104,10 @@
 		19262D4D1DE9D5BE0086FDE0 /* RandomManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RandomManager.m; path = Managers/RandomManager.m; sourceTree = "<group>"; };
 		192849161E05E8A000B120C1 /* OrganizationEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrganizationEditVC.h; path = ViewControllers/OrganizationEditVC/OrganizationEditVC.h; sourceTree = "<group>"; };
 		192849171E05E8A000B120C1 /* OrganizationEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrganizationEditVC.m; path = ViewControllers/OrganizationEditVC/OrganizationEditVC.m; sourceTree = "<group>"; };
+		1928491B1E06877A00B120C1 /* PaymentOptionAddVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentOptionAddVC.h; path = ViewControllers/PaymentOptionAddVC/PaymentOptionAddVC.h; sourceTree = "<group>"; };
+		1928491C1E06877A00B120C1 /* PaymentOptionAddVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentOptionAddVC.m; path = ViewControllers/PaymentOptionAddVC/PaymentOptionAddVC.m; sourceTree = "<group>"; };
+		1928491F1E068A1100B120C1 /* PaymentOptionEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentOptionEditVC.h; path = ViewControllers/PaymentOptionEditVC/PaymentOptionEditVC.h; sourceTree = "<group>"; };
+		192849201E068A1100B120C1 /* PaymentOptionEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentOptionEditVC.m; path = ViewControllers/PaymentOptionEditVC/PaymentOptionEditVC.m; sourceTree = "<group>"; };
 		19441A4F1E0331E70027A2DA /* OrganizationAddVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrganizationAddVC.h; path = ViewControllers/OrganizationAddVC/OrganizationAddVC.h; sourceTree = "<group>"; };
 		19441A501E0331E70027A2DA /* OrganizationAddVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrganizationAddVC.m; path = ViewControllers/OrganizationAddVC/OrganizationAddVC.m; sourceTree = "<group>"; };
 		19441A521E03FEC00027A2DA /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Category.h; path = Models/Category.h; sourceTree = "<group>"; };
@@ -268,6 +274,24 @@
 				192849171E05E8A000B120C1 /* OrganizationEditVC.m */,
 			);
 			name = OrganizationEditVC;
+			sourceTree = "<group>";
+		};
+		192849191E06873200B120C1 /* PaymentOptionAddVC */ = {
+			isa = PBXGroup;
+			children = (
+				1928491B1E06877A00B120C1 /* PaymentOptionAddVC.h */,
+				1928491C1E06877A00B120C1 /* PaymentOptionAddVC.m */,
+			);
+			name = PaymentOptionAddVC;
+			sourceTree = "<group>";
+		};
+		1928491E1E0689E300B120C1 /* PaymentOptionEditVC */ = {
+			isa = PBXGroup;
+			children = (
+				1928491F1E068A1100B120C1 /* PaymentOptionEditVC.h */,
+				192849201E068A1100B120C1 /* PaymentOptionEditVC.m */,
+			);
+			name = PaymentOptionEditVC;
 			sourceTree = "<group>";
 		};
 		19441A4E1E0331B30027A2DA /* OrganiztionAddVC */ = {
@@ -553,6 +577,8 @@
 				19E7D6F01DFDBFC900E7399D /* CardInfoEdit */,
 				195500BD1DC7F7C100B33416 /* Login */,
 				11FBC34B1DED5D0F00F3A996 /* MainWIndow */,
+				1928491E1E0689E300B120C1 /* PaymentOptionEditVC */,
+				192849191E06873200B120C1 /* PaymentOptionAddVC */,
 				196F8A511E055AEE0054A75F /* PaymentOptionsListVC */,
 				192849151E05E86C00B120C1 /* OrganizationEditVC */,
 				19441A4E1E0331B30027A2DA /* OrganiztionAddVC */,
@@ -752,6 +778,7 @@
 				196A15FB1DCFC8CB00295352 /* DJActivityIndicator.m in Sources */,
 				1953E5411DCE1E7800FAB1EB /* UserEdit.m in Sources */,
 				196F8A4C1E0545A50054A75F /* CategoryListMainVC.m in Sources */,
+				1928491D1E06877A00B120C1 /* PaymentOptionAddVC.m in Sources */,
 				11FBC34E1DED5D3500F3A996 /* MainWindow.m in Sources */,
 				19DA55691DC5FA7D00835979 /* UIProgressView+AFNetworking.m in Sources */,
 				19DA55621DC5FA7D00835979 /* AFURLSessionManager.m in Sources */,
@@ -802,6 +829,7 @@
 				1145EA911E026EED003D4DE9 /* OrganizationsListVC.m in Sources */,
 				19441A511E0331E70027A2DA /* OrganizationAddVC.m in Sources */,
 				19DA55641DC5FA7D00835979 /* AFImageDownloader.m in Sources */,
+				192849211E068A1100B120C1 /* PaymentOptionEditVC.m in Sources */,
 				19DA55661DC5FA7D00835979 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

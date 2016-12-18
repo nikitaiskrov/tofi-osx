@@ -36,7 +36,7 @@
 @synthesize CurrentEditableCardID;
 @synthesize CurrentEditableOrganizationID;
 @synthesize CurrentEditableCategoryID;
-@synthesize CurrentEditablePaymentOption;
+@synthesize CurrentEditablePaymentOptionID;
 
 
 #pragma mark - init
@@ -137,12 +137,20 @@
             result = [result stringByAppendingFormat:@"/cards/bank/accounts/%ld?session=%@", (long)ID, self.sessionID];
             break;
             
+        case GetCardWithID:
+            result = [result stringByAppendingFormat:@"/cards/%ld?session=%@", (long)ID, self.sessionID];
+            break;
+            
         case CreateEnrollment:
             result = [result stringByAppendingString:@"/payments/enrollment/make"];
             break;
             
         case CreateCard:
             result = [result stringByAppendingString:@"/cards"];
+            break;
+            
+        case ChageCardStatus:
+            result = [result stringByAppendingFormat:@"/admin/cards/%ld/block", (long)ID];
             break;
             
         case CreateCardInfo:
@@ -154,7 +162,7 @@
             break;
             
         case UpdateCardLimits:
-            result = [result stringByAppendingString:@""];
+            result = [result stringByAppendingFormat:@"/card/limits/%ld", (long)ID];
             break;
             
         case GetOrganizationsList:
@@ -196,12 +204,24 @@
         case GetPaymentOptionsList:
             result = [result stringByAppendingFormat:@"/payments/options?session=%@", self.sessionID];
             break;
+            
+        case CreatePaymetOption:
+            result = [result stringByAppendingString:@"/payments/options"];
+            break;
+            
+        case DeletePaymentOption:
+            result = [result stringByAppendingFormat:@"/payments/options/%ld?session=%@", (long)ID, self.sessionID];
+            break;
+            
+        case UpdatePaymetOption:
+            result = [result stringByAppendingFormat:@"/payments/options/%ld", (long)ID];
+            break;
     }
     
     return result;
 }
 
-- (NSDateFormatter *)FGetFullDateFormatter
+- (NSDateFormatter *)GetFullDateFormatter
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];

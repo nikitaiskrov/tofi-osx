@@ -92,22 +92,17 @@
     if (index >= 0)
     {
         Card *selectedCard = iBankSessionManager.Cards[index];
-        NSString *cardNumber = selectedCard.LastFourNumbers;
+        iBankSessionManager.CurrentEditableCardID = selectedCard.ID;
         
-    //    if ([cardNumber isMemberOfClass:[NSNull class]])
-    //    {
-            iBankSessionManager.CurrentEditableCardID = selectedCard.ID;
-            
-            NSStoryboard *sb = [self storyboard];
-            id animator = [[MyCustomAnimator alloc] init];
-            NSViewController *cardEdit = [sb instantiateControllerWithIdentifier:@"CardInfoEditVC"];
-            
-            if (mainWindowRootController == nil)
-            {
-                mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
-            }
-            [mainWindowRootController presentViewController:cardEdit animator:animator];
-    //    }
+        NSStoryboard *sb = [self storyboard];
+        id animator = [[MyCustomAnimator alloc] init];
+        NSViewController *cardEdit = [sb instantiateControllerWithIdentifier:@"CardInfoEditVC"];
+        
+        if (mainWindowRootController == nil)
+        {
+            mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+        }
+        [mainWindowRootController presentViewController:cardEdit animator:animator];
     }
 }
 
@@ -220,7 +215,6 @@
                                       }];
     
     [dataTask resume];
-
 }
 
 
