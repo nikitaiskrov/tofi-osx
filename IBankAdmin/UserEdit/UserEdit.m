@@ -23,6 +23,7 @@
     User *user;
     NSViewController *mainWindowRootController;
     NSInteger currentSelectedPopUpMenuButtonIndex;
+    NSInteger seconds;
 }
 
 @end
@@ -115,13 +116,21 @@
     {
         self.StatusChangebleLabel.textColor = [NSColor redColor];
         self.ChangeStatusButton.title = @"Разблокировать";
-        self.StatusChangebleLabel.stringValue = @"Заблокирован";
+        
+        NSDate *date = account.BlockedDate;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSString *str =  [formatter stringFromDate:date];
+        
+        self.StatusChangebleLabel.stringValue = account.DateIsNull ? @"Заблокирован навсегда" : [NSString stringWithFormat:@"Заблокирован до %@", str];
+        [self.ChangeStatusTextField setEnabled:false];
     }
     else
     {
         self.StatusChangebleLabel.textColor = [NSColor greenColor];
         self.ChangeStatusButton.title = @"Заблокировать";
         self.StatusChangebleLabel.stringValue = @"Активен";
+        [self.ChangeStatusTextField setEnabled:true];
     }
 }
 
@@ -132,10 +141,53 @@
 
     if (account == nil)
     {
+        [self.ChangeStatusTextField setEnabled:false];
         self.ChangeStatusButton.title = @"Cоздать аккаунт";
         self.StatusChangebleLabel.stringValue = @"Не создан для текущего клиента. Для работы с карт-счетами клиента создайте для него аккаунт.";
         [self.BankAccountsButton setEnabled:false];
     }
+    else
+    {
+        [self FetchAccount];
+    }
+}
+
+
+- (void)FetchAccount
+{
+    [DJProgressHUD showStatus:@"Загрузка" FromView:self.view];
+    
+    iBankSessionManager = [IBankSessionManager manager];
+    NSString *URLString = [iBankSessionManager GetURLWithRequestType:GetAccountWithID parameterID:iBankSessionManager.CurrentEditableAccountID];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:URLString parameters:nil error:nil];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error)
+                                      {
+                                          if (error)
+                                          {
+                                              [DJProgressHUD dismiss];
+                                              
+                                              NSAlert *alert = [NSAlert alertWithMessageText:@"Ошибка"
+                                                                               defaultButton:@"OK"
+                                                                             alternateButton:nil
+                                                                                 otherButton:nil
+                                                                   informativeTextWithFormat:@"%@", [(NSDictionary *)responseObject valueForKey:@"message"]];
+                                              
+                                              [alert runModal];
+                                          }
+                                          else
+                                          {
+                                              [DJProgressHUD dismiss];
+
+                                              account = [[Account alloc] initWIthDictionary:(NSDictionary *)responseObject];
+                                              isBlocked = account.IsBlocked;
+                                              [self UptadeAccountUIComponents];
+                                          }
+                                      }];
+    
+    [dataTask resume];
 }
 
 
@@ -146,19 +198,31 @@
     NSString *URLString = [iBankSessionManager GetURLWithRequestType:ChangeAccountStatus parameterID:-1];
     URLString = [URLString stringByAppendingFormat:@"%ld/block", (long)iBankSessionManager.CurrentEditableAccountID];
     NSString *newBlockStatus = isBlocked ? @"unblock" : @"block";
+    seconds = self.ChangeStatusTextField.integerValue * 3600;
     
-    NSDictionary *parameters = @{
-                                 @"session" : iBankSessionManager.sessionID,
-                                 @"blockType": newBlockStatus,
-                                 @"blockDuration" : @600,
-                                 };
+    NSDictionary *parameters = nil;
+
+    
+    if (seconds > 0)
+    {
+        parameters = @{
+                       @"session" : iBankSessionManager.sessionID,
+                       @"blockType": newBlockStatus,
+                       @"blockDuration" : [@(seconds) stringValue]
+                       };
+    }
+    else
+    {
+        parameters = @{
+                       @"session" : iBankSessionManager.sessionID,
+                       @"blockType": newBlockStatus,
+                       };
+
+    }
     
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:parameters error:nil];
-    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error)
                                       {
                                           if (error)
@@ -186,8 +250,9 @@
                                               alert.alertStyle = NSAlertStyleInformational;
                                               [alert runModal];
                                               
-                                              isBlocked = !isBlocked;
-                                              [self UptadeAccountUIComponents];
+                                              [self FetchAccount];
+//                                              isBlocked = !isBlocked;
+//                                              [self UptadeAccountUIComponents];
                                           }
                                       }];
     

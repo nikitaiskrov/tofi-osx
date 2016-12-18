@@ -105,6 +105,10 @@
             result = [result stringByAppendingFormat:@"/accounts/?session=%@", self.sessionID];
             break;
             
+        case GetAccountWithID:
+            result = [result stringByAppendingFormat:@"/accounts/%ld?session=%@", (long)ID, self.sessionID];
+            break;
+            
         case CreateClient:
             result = [result stringByAppendingString:@"/clients"];
             break;

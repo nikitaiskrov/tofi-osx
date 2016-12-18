@@ -58,6 +58,7 @@
 @property (weak) IBOutlet NSTextField *NewPasswordTextField;
 @property (weak) IBOutlet NSTextField *NewPasswordRepeatTextField;
 
+@property (weak) IBOutlet NSTextField *ChangeStatusTextField;
 @property (weak) IBOutlet NSButton *ChangeStatusButton;
 @property (weak) IBOutlet NSButton *BankAccountsButton;
 

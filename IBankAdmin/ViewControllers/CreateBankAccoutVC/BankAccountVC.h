@@ -34,6 +34,7 @@
 @property (weak) IBOutlet NSTextField *CardsLabel;
 @property (weak) IBOutlet NSTableView *CardsTableView;
 @property (weak) IBOutlet NSButton *ChangeStatusButton;
+@property (weak) IBOutlet NSTextField *ChangeStatusTextField;
 
 @property (weak) IBOutlet NSTextField *AddCashTextField;
 
