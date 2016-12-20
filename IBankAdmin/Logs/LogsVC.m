@@ -16,7 +16,7 @@
 @interface LogsVC()
 {
     IBankSessionManager *iBankSessionManager;
-    NSTabViewController *tabViewRootController;
+    NSViewController *rootController;
     
     NSInteger lastSelectedRowIndex;
 }
@@ -33,6 +33,11 @@
     {
         [self.TableView deselectRow:lastSelectedRowIndex];
     }
+    
+//    if (rootController == nil)
+//    {
+//        rootController = (NSViewController *)[[NSApplication sharedApplication] mainWindow].contentViewController;
+//    }
     
     [DJProgressHUD showStatus:@"Загрузка" FromView:self.view];
     
@@ -99,7 +104,7 @@
         }
         else if ([tableView tableColumns][1] == tableColumn)
         {
-            return [NSNumber numberWithUnsignedInteger:log.UserID];
+            return (log.UserID == -1) ? @"-" : [NSNumber numberWithUnsignedInteger:log.UserID];
         }
         else if ([tableView tableColumns][2] == tableColumn)
         {
@@ -152,7 +157,7 @@
     //fix head select
 //    iBankSessionManager.CurrentEditableAccountID = [[notification object] selectedRow];
 //    lastSelectedRowIndex = [[notification object] selectedRow];
-//    
+    
 //    if (tabViewRootController == nil)
 //    {
 //        tabViewRootController = (NSTabViewController *)[[NSApplication sharedApplication] mainWindow].contentViewController;

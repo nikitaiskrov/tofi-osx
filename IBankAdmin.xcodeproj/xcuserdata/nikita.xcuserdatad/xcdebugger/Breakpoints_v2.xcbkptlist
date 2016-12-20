@@ -16,16 +16,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IBankAdmin/ViewControllers/OrganizationsListVC/OrganizationsListVC.m"
-            timestampString = "503477620.74342"
+            filePath = "IBankAdmin/DJProgressHUD/DJProgressHUD.m"
+            timestampString = "503908052.393726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-viewWillAppear"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "+dismiss"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IBankAdmin/DJProgressHUD/DJProgressHUD.m"
+            timestampString = "503908168.193522"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "+showStatus:FromView:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
