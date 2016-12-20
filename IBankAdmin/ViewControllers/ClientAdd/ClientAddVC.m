@@ -58,15 +58,15 @@
     self.FirstNameTextField.placeholderString = @"Ева";
     self.MiddleNameTextField.placeholderString = @"Владимировна";
     self.PhoneTextField.placeholderString = @"80293728665";
-    self.PassportTextField.placeholderString = [randomManager randomStringNumberWithLength:10];
+    self.PassportTextField.placeholderString = @"HB2222222";
     self.NationalityTextField.placeholderString = @"Беларус";
     self.BirthdayTextField.placeholderString = @"1998-06-28";
-    self.IdentificationTextField.placeholderString = [randomManager randomStringNumberWithLength:10];
+    self.IdentificationTextField.placeholderString = @"7123456А001РВ3";
     self.PlaceOfBirthTextField.placeholderString = @"Светлогорск";
     self.DateOfIssueTextField.placeholderString = @"2010-10-10";
     self.DateOfExpirationTextField.placeholderString = @"2020-10-10";
     self.AuthorityTextField.placeholderString = @"Светлогорский РОВД";
-    self.SecretQuestionTextField.stringValue = @"Девичья фамилия матери";
+    self.SecretQuestionTextField.placeholderString = @"Девичья фамилия матери";
     self.SecretAnswerTextField.placeholderString = @"Кукар";
 }
 
