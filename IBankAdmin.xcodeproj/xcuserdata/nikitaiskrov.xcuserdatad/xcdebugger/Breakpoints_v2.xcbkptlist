@@ -142,38 +142,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IBankAdmin/ViewControllers/CardInfoEditVC/CardInfoEditVC.m"
-            timestampString = "503957725.80324"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "-CardLimitsSaveChangesButtonOnClick:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IBankAdmin/ViewControllers/CardInfoEditVC/CardInfoEditVC.m"
-            timestampString = "503957726.840812"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
-            landmarkName = "-CardLimitsSaveChangesButtonOnClick:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IBankAdmin/ViewControllers/CardInfoEditVC/CardInfoEditVC.m"
             timestampString = "503957883.00799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
