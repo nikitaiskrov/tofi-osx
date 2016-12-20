@@ -34,8 +34,10 @@
 }
 
 
-- (void)viewWillAppear
+- (void)viewDidAppear
 {
+    [super viewDidAppear];
+    
     [self PrepareTextFields];
     
     [self FetchOrganizations];
@@ -71,7 +73,7 @@
     
     if (mainWindowRootController == nil)
     {
-        mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+        mainWindowRootController = [[NSApplication sharedApplication] mainWindow].contentViewController;
     }
     
     [mainWindowRootController presentViewController:userEdit animator:animator];

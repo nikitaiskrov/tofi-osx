@@ -39,9 +39,9 @@
 }
 
 
-- (void)viewWillAppear
+- (void)viewDidAppear
 {
-    [super viewWillAppear];
+    [super viewDidAppear];
     
     [self PrepareTextFields];
 }
@@ -162,7 +162,7 @@
     
     if (mainWindowRootController == nil)
     {
-        mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+        mainWindowRootController = [[NSApplication sharedApplication] mainWindow].contentViewController;
     }
     
     [mainWindowRootController presentViewController:userEdit animator:animator];
@@ -177,7 +177,7 @@
     
     if (mainWindowRootController == nil)
     {
-        mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+        mainWindowRootController = [[NSApplication sharedApplication] mainWindow].contentViewController;
     }
     
     [mainWindowRootController presentViewController:userEdit animator:animator];

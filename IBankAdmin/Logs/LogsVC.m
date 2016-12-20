@@ -25,9 +25,9 @@
 
 @implementation LogsVC
 
-- (void)viewWillAppear
+- (void)viewDidAppear
 {
-    [super viewWillAppear];
+    [super viewDidAppear];
     
     if (lastSelectedRowIndex > 0)
     {

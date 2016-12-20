@@ -34,9 +34,9 @@
 }
 
 
-- (void)viewWillAppear
+- (void)viewDidAppear
 {
-    [super viewWillAppear];
+    [super viewDidAppear];
     
     [self PrepareTextFields];
 }

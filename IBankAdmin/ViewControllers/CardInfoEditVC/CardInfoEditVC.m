@@ -37,8 +37,10 @@
 }
 
 
-- (void)viewWillAppear
+- (void)viewDidAppear
 {
+    [super viewDidAppear];
+    
     card = nil;
     for (NSInteger i = 0; i < iBankSessionManager.Cards.count; i++)
     {
@@ -365,7 +367,7 @@
     
     if (mainWindowRootController == nil)
     {
-        mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+        mainWindowRootController = [[NSApplication sharedApplication] mainWindow].contentViewController;
     }
     
     [mainWindowRootController presentViewController:userEdit animator:animator];

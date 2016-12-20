@@ -27,19 +27,17 @@
 {
     [super viewDidLoad];
     
-//    [DJProgressHUD showStatus:@"Загрузка" FromView:self.view];
-//    self.view.window.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask;
+    self.view.window.styleMask = NSTitledWindowMask | NSResizableWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask;
 //    self.view.size =  NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
 //    [self setPreferredContentSize:self.view.frame.size];
-    self.preferredContentSize = self.view.frame.size;
-
+//    self.preferredContentSize = self.view.frame.size;
     [self fetchAccounts];
 }
 
 
 - (void)viewDidAppear
 {
-    [self setPreferredContentSize:self.view.frame.size];
+//    [self setPreferredContentSize:self.view.frame.size];
     //    self.view.window.styleMask = NSClosableWindowMask | NSTitledWindowMask | NSMiniaturizableWindowMask;
     //    self.view.size =  NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
 }

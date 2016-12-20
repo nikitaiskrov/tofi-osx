@@ -10,6 +10,7 @@
 		1145EA8A1E026B99003D4DE9 /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1145EA891E026B99003D4DE9 /* Organization.m */; };
 		1145EA8D1E026C56003D4DE9 /* PaymentOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 1145EA8C1E026C56003D4DE9 /* PaymentOption.m */; };
 		1145EA911E026EED003D4DE9 /* OrganizationsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1145EA901E026EED003D4DE9 /* OrganizationsListVC.m */; };
+		11EBA36B1E094CE900015E66 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBA36A1E094CE900015E66 /* WindowController.m */; };
 		11FBC3491DED5C1600F3A996 /* MyCustomAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FBC3461DED5C1600F3A996 /* MyCustomAnimator.m */; };
 		11FBC34A1DED5C1600F3A996 /* MyCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FBC3481DED5C1600F3A996 /* MyCustomSegue.m */; };
 		11FBC34E1DED5D3500F3A996 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FBC34D1DED5D3500F3A996 /* MainWindow.m */; };
@@ -93,6 +94,8 @@
 		1145EA8C1E026C56003D4DE9 /* PaymentOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentOption.m; path = Models/PaymentOption.m; sourceTree = "<group>"; };
 		1145EA8F1E026EED003D4DE9 /* OrganizationsListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrganizationsListVC.h; path = ViewControllers/OrganizationsListVC/OrganizationsListVC.h; sourceTree = "<group>"; };
 		1145EA901E026EED003D4DE9 /* OrganizationsListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrganizationsListVC.m; path = ViewControllers/OrganizationsListVC/OrganizationsListVC.m; sourceTree = "<group>"; };
+		11EBA3691E094CE900015E66 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowController.h; path = ViewControllers/WindowController/WindowController.h; sourceTree = "<group>"; };
+		11EBA36A1E094CE900015E66 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WindowController.m; path = ViewControllers/WindowController/WindowController.m; sourceTree = "<group>"; };
 		11FBC3451DED5C1600F3A996 /* MyCustomAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomAnimator.h; sourceTree = "<group>"; };
 		11FBC3461DED5C1600F3A996 /* MyCustomAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomAnimator.m; sourceTree = "<group>"; };
 		11FBC3471DED5C1600F3A996 /* MyCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomSegue.h; sourceTree = "<group>"; };
@@ -245,6 +248,15 @@
 				1145EA901E026EED003D4DE9 /* OrganizationsListVC.m */,
 			);
 			name = OrganizationsListVC;
+			sourceTree = "<group>";
+		};
+		11EBA3681E094CB700015E66 /* WindowController */ = {
+			isa = PBXGroup;
+			children = (
+				11EBA3691E094CE900015E66 /* WindowController.h */,
+				11EBA36A1E094CE900015E66 /* WindowController.m */,
+			);
+			name = WindowController;
 			sourceTree = "<group>";
 		};
 		11FBC3441DED5C0100F3A996 /* CustomSegue */ = {
@@ -574,6 +586,7 @@
 		19DA556E1DC5FD2900835979 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11EBA3681E094CB700015E66 /* WindowController */,
 				19E7D6F01DFDBFC900E7399D /* CardInfoEdit */,
 				195500BD1DC7F7C100B33416 /* Login */,
 				11FBC34B1DED5D0F00F3A996 /* MainWIndow */,
@@ -794,6 +807,7 @@
 				19DA55681DC5FA7D00835979 /* UIImageView+AFNetworking.m in Sources */,
 				19DA55751DC6145E00835979 /* IBankSessionManager.m in Sources */,
 				19F2CBA21DD8D01800532E24 /* AccountListVC.m in Sources */,
+				11EBA36B1E094CE900015E66 /* WindowController.m in Sources */,
 				195500C31DC7FCCB00B33416 /* User.m in Sources */,
 				196F8A541E055B270054A75F /* PaymentOptionListVC.m in Sources */,
 				19DA55671DC5FA7D00835979 /* UIButton+AFNetworking.m in Sources */,
@@ -973,7 +987,7 @@
 				DEVELOPMENT_TEAM = VNX27QNU7R;
 				INFOPLIST_FILE = IBankAdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikita.iskrov.IBankAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -988,7 +1002,7 @@
 				DEVELOPMENT_TEAM = VNX27QNU7R;
 				INFOPLIST_FILE = IBankAdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikita.iskrov.IBankAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

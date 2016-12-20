@@ -11,12 +11,14 @@
 #import "IBankSessionManager.h"
 #import "UserListVC.h"
 #import "DJProgressHUD.h"
+#import "WindowController.h"
 
 @implementation LoginVC
 {
 }
 
 @synthesize MainWindowController;
+@synthesize Window;
 
 
 #pragma mark - ViewContoroller life cycle
@@ -70,9 +72,16 @@
             NSLog(@"%@", iBankSessionManager.sessionID);
             
             //======
-            NSStoryboard *sb = [self storyboard];
-            self.MainWindowController = [sb instantiateControllerWithIdentifier:@"MainWindowController"];
-            [self presentViewControllerAsSheet:self.MainWindowController];
+            NSStoryboard *sb = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+//             self.MainWindowController = [sb instantiateControllerWithIdentifier:@"MainWindowController"];
+//            [self presentViewControllerAsSheet:self.MainWindowController];
+//            [self presentViewControllerAsModalWindow:self.MainWindowController];
+            
+//MainWindow
+            
+            self.Window = [sb instantiateControllerWithIdentifier:@"MainWindow111"]; // instantiate your window controller
+            [Window showWindow:self]; // show the window
+            [self.view.window close];
             //======
         }
     }];

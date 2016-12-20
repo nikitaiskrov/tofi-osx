@@ -36,9 +36,9 @@
 }
 
 
-- (void)viewWillAppear
+- (void)viewDidAppear
 {
-    [super viewWillAppear];
+    [super viewDidAppear];
     
     organization = nil;
     for (NSInteger i = 0; i < iBankSessionManager.Organizations.count; i++)
@@ -148,7 +148,7 @@
     
     if (mainWindowRootController == nil)
     {
-        mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+        mainWindowRootController = [[NSApplication sharedApplication] mainWindow].contentViewController;
     }
     
     [mainWindowRootController presentViewController:userEdit animator:animator];
@@ -266,7 +266,7 @@
     
     if (mainWindowRootController == nil)
     {
-        mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+        mainWindowRootController = [[NSApplication sharedApplication] mainWindow].contentViewController;
     }
     
     [mainWindowRootController presentViewController:userEdit animator:animator];

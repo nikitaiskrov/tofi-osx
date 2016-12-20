@@ -34,9 +34,9 @@
 }
 
 
-- (void)viewWillAppear
+- (void)viewDidAppear
 {
-    [super viewWillAppear];
+    [super viewDidAppear];
     
     if (lastSelectedRowIndex > 0)
     {
@@ -146,7 +146,7 @@
     
         if (mainWindowRootController == nil)
         {
-            mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+            mainWindowRootController = [[NSApplication sharedApplication] mainWindow].contentViewController;
         }
     
         [mainWindowRootController presentViewController:userEdit animator:animator];
@@ -162,7 +162,7 @@
     
     if (mainWindowRootController == nil)
     {
-        mainWindowRootController = ((LoginVC *)[[NSApplication sharedApplication] mainWindow].contentViewController).MainWindowController;
+        mainWindowRootController = [[NSApplication sharedApplication] mainWindow].contentViewController;
     }
     
     [mainWindowRootController presentViewController:userEdit animator:animator];

@@ -16,6 +16,7 @@
 @property (weak) IBOutlet NSSecureTextField *PasswordTextField;
 @property (weak) IBOutlet NSWindowController *TabBarWindowController;
 @property (strong) MainWindow *MainWindowController;
+@property (strong) NSWindowController *Window;
 
 
 - (IBAction)AutorizationButtonOnClick:(NSButton *)sender;
