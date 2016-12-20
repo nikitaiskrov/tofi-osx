@@ -116,6 +116,13 @@
         
         self.BlockDateLabel.stringValue = @"-";
     }
+    
+    NSInteger cardNumber = [card.LastFourNumbers integerValue];
+    
+    if (cardNumber > 0)
+    {
+        [self.ChangeStatusButton setEnabled:true];
+    }
 }
 
 
