@@ -14,6 +14,7 @@
 #import "MyCustomAnimator.h"
 #import "UserEdit.h"
 #import "LoginVC.h"
+#import "Account.h"
 
 @interface UserListVC ()
 {
@@ -65,7 +66,6 @@
           }
           else
           {
-              [DJProgressHUD dismiss];
               
               NSArray *usersFromServer = (NSArray *)[(NSDictionary *)responseObject valueForKey:@"clients"];
               [iBankSessionManager.Users removeAllObjects];
@@ -78,12 +78,46 @@
               }
 
               [self.TableView reloadData];
+              [self fetchAccounts];
           }
       }];
     
     [dataTask resume];
-    
 
+}
+
+- (void)fetchAccounts
+{
+    iBankSessionManager = [IBankSessionManager manager];
+    NSString *URLString = [iBankSessionManager GetURLWithRequestType:GetAccountList parameterID:-1];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:URLString parameters:nil error:nil];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error)
+                                      {
+                                          if (error)
+                                          {
+                                              [DJProgressHUD dismiss];
+                                          }
+                                          else
+                                          {
+                                              [DJProgressHUD dismiss];
+                                              
+                                              NSArray *accountsFromServer = (NSArray *)[(NSDictionary *)responseObject valueForKey:@"users"];
+                                              [iBankSessionManager.Accounts removeAllObjects];
+                                              
+                                              for (NSInteger i = 0; i < accountsFromServer.count; i++)
+                                              {
+                                                  Account *account = [[Account alloc] initWIthDictionary:(NSDictionary *)accountsFromServer[i]];
+                                                  
+                                                  [iBankSessionManager.Accounts addObject:account];
+                                              }
+                                          }
+                                      }];
+    
+    [dataTask resume];
+    
 }
 
 
