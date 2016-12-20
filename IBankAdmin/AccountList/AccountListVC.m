@@ -13,6 +13,7 @@
 #import "DJProgressHUD.h"
 #import "MyCustomAnimator.h"
 #import "LoginVC.h"
+#import "User.h"
 
 @interface AccountListVC ()
 {
@@ -63,7 +64,6 @@
                                           }
                                           else
                                           {
-                                              [DJProgressHUD dismiss];
                                               
                                               NSArray *accountsFromServer = (NSArray *)[(NSDictionary *)responseObject valueForKey:@"users"];
                                               [iBankSessionManager.Accounts removeAllObjects];
@@ -76,12 +76,49 @@
                                               }
                                               
                                               [self.TableView reloadData];
+                                              
+                                              [self fetchClients];
                                           }
                                       }];
     
     [dataTask resume];
 }
 
+- (void)fetchClients
+{
+    iBankSessionManager = [IBankSessionManager manager];
+    NSString *URLString = [iBankSessionManager GetURLWithRequestType:GetUsersList parameterID:-1];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:URLString parameters:nil error:nil];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error)
+                                      {
+                                          if (error)
+                                          {
+                                              [DJProgressHUD dismiss];
+                                          }
+                                          else
+                                          {
+                                              [DJProgressHUD dismiss];
+                                              NSArray *usersFromServer = (NSArray *)[(NSDictionary *)responseObject valueForKey:@"clients"];
+                                              [iBankSessionManager.Users removeAllObjects];
+                                              
+                                              for (NSInteger i = 0; i < usersFromServer.count; i++)
+                                              {
+                                                  User *user = [[User alloc] initWIthDictionary:(NSDictionary *)usersFromServer[i]];
+                                                  
+                                                  [iBankSessionManager.Users addObject:user];
+                                              }
+                                          }
+                                      }];
+    
+    [dataTask resume];
+    
+}
 
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView

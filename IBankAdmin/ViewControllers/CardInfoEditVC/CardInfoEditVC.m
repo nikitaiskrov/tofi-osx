@@ -40,7 +40,7 @@
 - (void)viewDidAppear
 {
     [super viewDidAppear];
-    
+    [self fetchCard];
     card = nil;
     for (NSInteger i = 0; i < iBankSessionManager.Cards.count; i++)
     {
@@ -207,6 +207,8 @@
                                               [alert runModal];
                                               
                                               [self.CardInfoButton setEnabled:false];
+                                              [self fetchCard];
+
                                           }
                                       }];
     
@@ -265,6 +267,8 @@
                                                                    informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               [alert runModal];
+                                              [self fetchCard];
+
                                           }
                                       }];
     
@@ -321,6 +325,8 @@
                                                                    informativeTextWithFormat:@""];
                                               alert.alertStyle = NSAlertStyleInformational;
                                               [alert runModal];
+                                              [self fetchCard];
+
                                           }
                                       }];
     
@@ -345,16 +351,13 @@
 
 - (IBAction)CardLimitsSaveChangesButtonOnClick:(id)sender
 {
-    if (![card.CashAttemptsLimit  isEqual: @""] ||
-        ![card.CashAmountLimit isEqual:@""] ||
-        ![card.CashlessAttemptsLimit isEqual:@""] ||
-        ![card.CashlessAmountLimit isEqual:@""])
+    if ([card.CashAttemptsLimit isEqual:@""])
     {
-        [self updateCardLimits];
+        [self createCardLimits];
     }
     else
     {
-        [self createCardLimits];
+        [self updateCardLimits];
     }
 }
 

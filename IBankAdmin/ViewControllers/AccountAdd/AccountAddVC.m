@@ -44,8 +44,8 @@
 
 - (void)PrepareTextFields
 {
-    self.LoginTextField.stringValue = @"client@gmail.com";
-    self.PasswordTextField.stringValue = @"Qwerty_12345";
+    self.LoginTextField.placeholderString = @"client@gmail.com";
+    self.PasswordTextField.placeholderString = @"Qwerty_12345";
 }
 
 

@@ -987,7 +987,7 @@
 				DEVELOPMENT_TEAM = VNX27QNU7R;
 				INFOPLIST_FILE = IBankAdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikita.iskrov.IBankAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1002,7 +1002,7 @@
 				DEVELOPMENT_TEAM = VNX27QNU7R;
 				INFOPLIST_FILE = IBankAdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikita.iskrov.IBankAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
