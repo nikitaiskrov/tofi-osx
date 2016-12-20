@@ -54,20 +54,20 @@
 {
     RandomManager *randomManager = [RandomManager manager];
     
-    self.LastNameTextField.stringValue = @"Test";
-    self.FirstNameTextField.stringValue = @"Test";
-    self.MiddleNameTextField.stringValue = @"Test";
-    self.PhoneTextField.stringValue = @"12345432345";
-    self.PassportTextField.stringValue = [randomManager randomStringNumberWithLength:10];
-    self.NationalityTextField.stringValue = @"Грек";
-    self.BirthdayTextField.objectValue = @"1994-10-10";
-    self.IdentificationTextField.stringValue = [randomManager randomStringNumberWithLength:10];
-    self.PlaceOfBirthTextField.stringValue = @"Test";
-    self.DateOfIssueTextField.objectValue = @"2010-10-10";
-    self.DateOfExpirationTextField.objectValue = @"2020-10-10";
-    self.AuthorityTextField.stringValue = @"Минский РОВД";
-    self.SecretQuestionTextField.objectValue = @"Девичья фамилия матери";
-    self.SecretAnswerTextField.objectValue = @"Петрова";
+    self.LastNameTextField.placeholderString = @"Кукар";
+    self.FirstNameTextField.placeholderString = @"Ева";
+    self.MiddleNameTextField.placeholderString = @"Владимировна";
+    self.PhoneTextField.placeholderString = @"80293728665";
+    self.PassportTextField.placeholderString = [randomManager randomStringNumberWithLength:10];
+    self.NationalityTextField.placeholderString = @"Беларус";
+    self.BirthdayTextField.placeholderString = @"1998-06-28";
+    self.IdentificationTextField.placeholderString = [randomManager randomStringNumberWithLength:10];
+    self.PlaceOfBirthTextField.placeholderString = @"Светлогорск";
+    self.DateOfIssueTextField.placeholderString = @"2010-10-10";
+    self.DateOfExpirationTextField.placeholderString = @"2020-10-10";
+    self.AuthorityTextField.placeholderString = @"Светлогорский РОВД";
+    self.SecretQuestionTextField.stringValue = @"Девичья фамилия матери";
+    self.SecretAnswerTextField.placeholderString = @"Кукар";
 }
 
 
